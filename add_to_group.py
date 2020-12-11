@@ -27,10 +27,10 @@ target_group_entity = InputPeerChannel(target_group.id, target_group.access_hash
 
 for user in users:
     try:
-        print("Adding {}".format(user["id"]))
+        print("Adding {}".format(user["name"]))
         user_to_add = utils.get_user(user, client)
         client(InviteToChannelRequest(target_group_entity, [user_to_add]))
-        print("Waiting 60 Seconds...")
+        print(f"Waiting {config.SLEEP_TIME} Seconds...")
         time.sleep(config.SLEEP_TIME)
     except PeerFloodError:
         print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
