@@ -85,7 +85,7 @@ def load_user(input_file):
 
 async def get_user(user: Dict, client: Optional[TelegramClient] = None):
     if user["username"] == "" or client is None:
-        receiver = await InputPeerUser(user["id"], user["access_hash"])
+        receiver = InputPeerUser(user["id"], user["access_hash"])
     else:
         receiver = await client.get_input_entity(user["username"])
 
