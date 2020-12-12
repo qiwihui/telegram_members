@@ -23,11 +23,11 @@ async def worker(client, queue):
         receiver = await utils.get_user(user, client)
 
         try:
+            # FIXME: skipped if this user was sent
             print("Sending Message to: ", user["name"])
             await client.send_message(receiver, message.format(user["name"]))
-            # TODO: record this user is sent
         except PeerFloodError:
-            # too much requests at the same time
+            # FIXME: too much requests at the same time
             print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
             # client.disconnect()
             # sys.exit()
